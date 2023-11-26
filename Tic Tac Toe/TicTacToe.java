@@ -114,9 +114,16 @@ public class TicTacToe {
 				System.out.println();
 				continue;
 			}
+			
+			
 			break;
 		}
 		int cellNumber = scanner.nextInt();
+		if(cellNumber < 1 || cellNumber> 9) {
+			System.out.println("Cell number out of range. Please try again.");
+			System.out.println();
+			return getCellNumber(player);
+		}
 		return cellNumber;
 		
 	}
