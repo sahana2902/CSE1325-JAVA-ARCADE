@@ -66,6 +66,7 @@ public class Application {
 	                break;
 	            case 2:
 	                //bingo
+			Bingo.main(new String[0]);
 	                break;
 	            case 3:
 	            	//minesweeper
