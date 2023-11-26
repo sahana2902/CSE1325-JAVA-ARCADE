@@ -15,12 +15,7 @@ public class SinglePlayerVersion extends TicTacToe {
 		System.out.println("You are Player 1. Your game piece is X.");
 		System.out.println("CPU is Player 2. It's game piece is O.");
 		System.out.println();
-		
-		System.out.print("Please enter the option number: ");
-		Scanner scanner = new Scanner(System.in);
-		int mode = scanner.nextInt();
-		scanner.nextLine();
-		System.out.println();
+
 		super.printGameBoard(board);
 		
 		//SinglePlayerVersion
@@ -39,11 +34,11 @@ public class SinglePlayerVersion extends TicTacToe {
 			
 			gamePiece = 'X';
 			int userCellNumber = super.getCellNumber(player1);
-			System.out.println(userCellNumber);
+			
 			/*
 			 this condition makes sure that player 1 (user) doesn't override the cells he has already 
 			 marked with 'X' or player 2's (CPU) cells that have already been marked with 'O'
-		        */
+		    */
 			
 			while(player1Positions.contains(userCellNumber) || player2Positions.contains(userCellNumber)) {
 				System.out.println("Cell already taken.");
@@ -58,23 +53,21 @@ public class SinglePlayerVersion extends TicTacToe {
 			
 			int result = super.checkWinner();
 			
-			
 			//if player 1 already won terminate game
-			if(result == 1) {
+			if(result == 1 || result == 3) {
 				super.printGameBoard(board);
 				end = super.printWinner(result,version);
 				break;
 			}
 	
 			
+			
 			//player 2 (CPU) actions
 			gamePiece = 'O';
 			int cpuCellNumber = 10;
-			
-			
 			cpuCellNumber = easyMode();
-				
-			System.out.println("cpu cell" + cpuCellNumber);
+		
+			
 			//place player 2 (CPU) game piece 'O' in random cell 
 			super.placeGamePiece(cpuCellNumber, board, gamePiece);
 			
@@ -93,7 +86,6 @@ public class SinglePlayerVersion extends TicTacToe {
 		super.emptyPositions();
 		super.emptyBoard();
 	}
-	
 	
 
 	/*This method makes the CPU choose a random cell without strategy.
