@@ -35,10 +35,6 @@ public class TicTacToeGUI {
 	            	new TwoPlayerVersion().execute();
 	                break;
 	            case 3:
-	            	//display scores
-	            	TicTacToe.displayTotalScore();;
-	                break;
-	            case 4:
 	            	//exit
 	            	endTicTacToeMenu();
 	            	//reset the games played so far back to zero
@@ -63,8 +59,7 @@ public class TicTacToeGUI {
         System.out.println();
         System.out.println("1. Single player version");
         System.out.println("2. Two player version");
-        System.out.println("3. Display Tic Tac Toe scores");
-        System.out.println("4. Exit");
+        System.out.println("3. Exit");
         System.out.println();
         System.out.println("=========================================");
        
