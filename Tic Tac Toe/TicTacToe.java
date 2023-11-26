@@ -109,7 +109,7 @@ public class TicTacToe {
 			System.out.printf(player + ": Enter which cell you want to place you game piece (1-9): ");
 			//error handling for invalid input
 			if(scanner.hasNextInt() == false) {
-				System.out.println("Invalid input format for option number. Please try again.");
+				System.out.println("Invalid input format for cell number. Please try again.");
 				scanner.nextLine();
 				System.out.println();
 				continue;
