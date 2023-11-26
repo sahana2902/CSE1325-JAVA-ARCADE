@@ -84,6 +84,7 @@ public class TwoPlayerVersion extends TicTacToe {
 		
 		}
 		super.emptyPositions();
+		super.emptyBoard();
 	}
 
 }
