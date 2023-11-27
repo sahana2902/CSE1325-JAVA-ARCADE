@@ -230,8 +230,34 @@ public class Bingo {
         }
     }
 
+    public static void displayRules() {
+        System.out.println("     \033[31;43;5mWelcome to the Bingo Game!\033[0m");
+        System.out.println("========== Rules of Bingo ==========");
+        System.out.println();
+        System.out.println("1. Each player is given a Bingo board with randomly placed numbers.");
+        System.out.println();
+        System.out.println("2. The center cell is marked as 'Free'.");
+        System.out.println();
+        System.out.println("3. Players take turns rolling Bingo numbers.");
+        System.out.println();
+        System.out.println("4. If a rolled number matches a number on your board, mark it with an 'X'.");
+        System.out.println();
+        System.out.println("5. The game continues until a player completes a winning pattern:");
+        System.out.println("   - Diagonal, Horizontal, or Vertical.");
+        System.out.println();
+        System.out.println("7. The game also ends if a player chooses to stop rolling numbers.");
+        System.out.println();
+        System.out.println("8. Enjoy the game of Bingo!");
+        System.out.println();
+        System.out.println("==================================");
+    }
+
     // Main method to start the game
     public static void main(String[] args) {
+
+        // Display the rules when the game starts
+        displayRules();
+
         System.out.println("    ::::::::::::::::::::::::::::::::::");
         System.out.println("    ::      XXX B I N G O XXX       ::");
         System.out.println("    ::                              ::");
