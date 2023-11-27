@@ -44,47 +44,47 @@ public class Application {
 		boolean end = false;
 		
 		//Error handling for invalid input 
-        while(true && end == false)	{
-        	displayArcadeMenu();
-        	System.out.print("Please enter the option number: ");
-	        if(scanner.hasNextInt() == false) {
-				System.out.println("Invalid input format for option number. Please try again.");
-				scanner.nextLine();
-				System.out.println();
-				continue;
+	        while(true && end == false)	{
+	        	displayArcadeMenu();
+	        	System.out.print("Please enter the option number: ");
+		        if(scanner.hasNextInt() == false) {
+					System.out.println("Invalid input format for option number. Please try again.");
+					scanner.nextLine();
+					System.out.println();
+					continue;
 			}
-		
-	        int userChoice = scanner.nextInt();
-	        scanner.nextLine();
-	        System.out.println();
-	       // System.out.println("=========================================");
-	        
-	       
-	        switch (userChoice) {
-	            case 1:
-	            	//tic tac toe
-	            	new ticTacToe.TicTacToeGUI().execute();
-	                break;
-	            case 2:
-	                //bingo
-			Bingo.main(new String[0]);
-	                break;
-	            case 3:
-	            	//minesweeper
-	                break;
-	            case 4:
-	            	endProgramMenu();
-	            	end = true;
-	                break;
-	            
-	            default:
-	            	//error handling to check that the integer user entered is in the valid range
-	                System.out.println();
-	                System.out.println("Option number out of range. Please try again.");
-	                break;
-	        }
-	        
-    	}
+			
+		        int userChoice = scanner.nextInt();
+		        scanner.nextLine();
+		        System.out.println();
+		       // System.out.println("=========================================");
+		        
+		       
+		        switch (userChoice) {
+		            case 1:
+		            	//tic tac toe
+		            	new ticTacToe.TicTacToeGUI().execute();
+		                break;
+		            case 2:
+		                //bingo
+				Bingo.main(new String[0]);
+		                break;
+		            case 3:
+		            	//minesweeper
+		                break;
+		            case 4:
+		            	endProgramMenu();
+		            	end = true;
+		                break;
+		            
+		            default:
+		            	//error handling to check that the integer user entered is in the valid range
+		                System.out.println();
+		                System.out.println("Option number out of range. Please try again.");
+		                break;
+		        }
+		        
+	    	}
     
 	}
 
