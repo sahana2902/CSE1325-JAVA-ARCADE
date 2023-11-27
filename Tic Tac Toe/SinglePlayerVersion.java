@@ -53,7 +53,7 @@ public class SinglePlayerVersion extends TicTacToe {
 			
 			int result = super.checkWinner();
 			
-			//if player 1 already won terminate game
+			//if player 1 already won (result == 1), or if there is a tie (result == 3) then terminate game
 			if(result == 1 || result == 3) {
 				super.printGameBoard(board);
 				end = super.printWinner(result,version);
