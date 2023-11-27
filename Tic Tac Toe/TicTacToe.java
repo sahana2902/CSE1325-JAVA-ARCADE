@@ -67,13 +67,13 @@ public class TicTacToe {
 		System.out.println();
 		System.out.println("Players take turns putting their marks in empty squares.");
 		System.out.println();
-		System.out.println("The first player to get 3 of her marks in a row ");
+		System.out.println("The first player to get 3 of their marks in a row ");
 		System.out.println();
 		System.out.println("(up, down, across, or diagonally) is the winner.");
 		System.out.println();
 		System.out.println("When all 9 squares are full, the game is over.");
 		System.out.println();
-		System.out.println("If no player has 3 marks in a row, the game ends in a tie.");
+		System.out.println("If no player has 3 marks in at row, the game ends in a tie.");
 		System.out.println();
 		System.out.println("When it is your turn, enter the cell number as shown below");
 		System.out.println();
