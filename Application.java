@@ -2,7 +2,7 @@ package arcadeGame;
 
 import java.util.Scanner;
 import ticTacToe.*;
-import Bingo.*;
+import bingo.*;
 
 public class Application {
 
