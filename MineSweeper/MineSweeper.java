@@ -8,7 +8,6 @@ public class MineSweeper extends JFrame {
     private static final int ROWS = 8;
     private static final int COLS = 8;
     private static final int MINES = 10;
-
     private JButton[][] buttons;
     private boolean[][] mines;
     private boolean[][] revealed;
@@ -65,6 +64,7 @@ public class MineSweeper extends JFrame {
             }
         }
     }
+
 
     private void setupTryAgainButton() {
         tryAgainButton = new JButton("Try Again");
@@ -214,6 +214,15 @@ private void resetGame() {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new MineSweeper());
+        runMineSweeper();
+    }
+
+     public static void runMineSweeper() {
+        SwingUtilities.invokeLater(() -> {
+            MineSweeper game = new MineSweeper();
+            game.setVisible(true);
+        });
     }
 }
+//SwingUtilities.invokeLater(() -> new MineSweeper());
+
