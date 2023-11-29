@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class MineSweeper extends JFrame {
+    private static MineSweeper instance;
+
     private static final int ROWS = 8;
     private static final int COLS = 8;
     private static final int MINES = 10;
@@ -21,9 +23,21 @@ public class MineSweeper extends JFrame {
 
     private boolean gameOver;
 
+    public static MineSweeper getInstance(){
+        if (instance == null) {
+            instance = new MineSweeper();
+        }
+        return instance;
+    }
+
+    public void showGame() {
+        setVisible(true);
+    }
+
+
     public MineSweeper() {
         setTitle("Minesweeper");
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
         setupGamePanel();
@@ -216,7 +230,7 @@ private void resetGame() {
     }
 
     public static void main(String[] args) {
-        runMineSweeper();
+        MineSweeper.getInstance().showGame();
     }
 
      public static void runMineSweeper() {
@@ -226,5 +240,3 @@ private void resetGame() {
         });
     }
 }
-//SwingUtilities.invokeLater(() -> new MineSweeper());
-
