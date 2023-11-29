@@ -1,5 +1,6 @@
 package minesweeper;
 
+package minesweeper;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,8 +8,6 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class MineSweeper extends JFrame {
-    private static MineSweeper instance;
-
     private static final int ROWS = 8;
     private static final int COLS = 8;
     private static final int MINES = 10;
@@ -17,48 +16,29 @@ public class MineSweeper extends JFrame {
     private boolean[][] revealed;
     private int remainingCells;
     private int score;
-
     private JPanel gamePanel;
     private JButton tryAgainButton;
-
     private boolean gameOver;
-
-    public static MineSweeper getInstance(){
-        if (instance == null) {
-            instance = new MineSweeper();
-        }
-        return instance;
-    }
-
-    public void showGame() {
-        setVisible(true);
-    }
-
 
     public MineSweeper() {
         setTitle("Minesweeper");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLayout(new BorderLayout());
 
         setupGamePanel();
         setupTryAgainButton();
-
         add(gamePanel, BorderLayout.CENTER);
         add(tryAgainButton, BorderLayout.SOUTH);
-
         initializeGame();
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
     private void setupGamePanel() {
         gamePanel = new JPanel();
         gamePanel.setLayout(new GridLayout(ROWS, COLS));
-
         buttons = new JButton[ROWS][COLS];
         revealed = new boolean[ROWS][COLS];
-
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
                 JButton button = new JButton();
@@ -66,7 +46,6 @@ public class MineSweeper extends JFrame {
                 button.setFocusPainted(false);
                 gamePanel.add(button);
                 buttons[i][j] = button;
-
                 final int row = i;
                 final int col = j;
                 button.addActionListener(new ActionListener() {
@@ -80,8 +59,6 @@ public class MineSweeper extends JFrame {
             }
         }
     }
-
-
     private void setupTryAgainButton() {
         tryAgainButton = new JButton("Try Again");
         tryAgainButton.addActionListener(new ActionListener() {
@@ -92,14 +69,12 @@ public class MineSweeper extends JFrame {
         });
         tryAgainButton.setVisible(false); // Initially invisible
     }
-
     private void initializeGame() {
         mines = new boolean[ROWS][COLS];
         revealed = new boolean[ROWS][COLS];
         remainingCells = ROWS * COLS - MINES;
         score = 0;
         gameOver = false;
-
         Random random = new Random();
         int count = 0;
         while (count < MINES) {
@@ -111,15 +86,12 @@ public class MineSweeper extends JFrame {
             }
         }
     }
-
     private void handleButtonClick(int row, int col) {
         if (revealed[row][col]) {
             return;
         }
-
         revealed[row][col] = true;
         buttons[row][col].setEnabled(false);
-
         if (mines[row][col]) {
             revealAllMines();
             gameOver = true;
@@ -144,16 +116,13 @@ public class MineSweeper extends JFrame {
             checkWin();
         }
     }
-
     private void revealCell(int row, int col) {
         if (row < 0 || col < 0 || row >= ROWS || col >= COLS || revealed[row][col]) {
             return;
         }
-
         revealed[row][col] = true;
         buttons[row][col].setEnabled(false);
         remainingCells--;
-
         int adjacentMines = getAdjacentMineCount(row, col);
         if (adjacentMines > 0) {
             buttons[row][col].setText(Integer.toString(adjacentMines));
@@ -169,7 +138,6 @@ public class MineSweeper extends JFrame {
             revealCell(row + 1, col + 1);
         }
     }
-
     private int getAdjacentMineCount(int row, int col) {
         int count = 0;
         for (int i = row - 1; i <= row + 1; i++) {
@@ -181,7 +149,6 @@ public class MineSweeper extends JFrame {
         }
         return count;
     }
-
     private void revealAllMines() {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
@@ -191,19 +158,16 @@ public class MineSweeper extends JFrame {
             }
         }
     }
-
     private void gameOver() {
         disableAllButtons();
         JOptionPane.showMessageDialog(this, "Game Over! Score: " + score);
     }
-
     private void checkWin() {
         if (remainingCells == 0) {
             disableAllButtons();
             JOptionPane.showMessageDialog(this, "You win! Score: " + score);
         }
     }
-
     private void disableAllButtons() {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
@@ -211,7 +175,6 @@ public class MineSweeper extends JFrame {
             }
         }
     }
-
 private void resetGame() {
     initializeGame();
     for (int i = 0; i < ROWS; i++) {
@@ -223,16 +186,12 @@ private void resetGame() {
     tryAgainButton.setVisible(false); // Hide the button again
     gameOver = false;
 }
-
-
     private void showTryAgainButton() {
         tryAgainButton.setVisible(true);
     }
-
     public static void main(String[] args) {
-        MineSweeper.getInstance().showGame();
+        runMineSweeper();
     }
-
      public static void runMineSweeper() {
         SwingUtilities.invokeLater(() -> {
             MineSweeper game = new MineSweeper();
