@@ -1,8 +1,8 @@
 package bingo;
 
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Set;
 
 public class Bingo {
@@ -87,12 +87,21 @@ public class Bingo {
             }
             // End the game if the user chooses 'n'
             else if (answer.equalsIgnoreCase("N")) {
-                System.out.println("If you press 'no' you will lose");
-                break;
+                System.out.println("Are you sure you don't want to continue? \ny or n?");
+                String answer1 = input.next();
+                if (answer1.equalsIgnoreCase("Y")) {
+                    System.out.println("You quit this round midway.");
+                    break;
+                } else if (answer1.equalsIgnoreCase("N")) {
+                    continue;
+                } else {
+                    System.out.println("Invalid Input");
+                }
             }
             // Display an error message for invalid input
             else {
-                System.out.println("Not in range");
+                System.out.println("Invalid input. Please enter 'y' or 'n'.");
+                continue;
             }
 
             // Display the rolled Bingo number and update the board
