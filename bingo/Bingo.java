@@ -2,6 +2,8 @@ package bingo;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Bingo {
     // Scanner for user input
@@ -21,6 +23,7 @@ public class Bingo {
         int num = 0;
         int RanNum = 1;
         boolean uniqueNumber;
+        Set<Integer> drawnNumbers = new HashSet<>();
 
         // Loop to fill the Bingo board with random numbers
         for (int index = 0; index < 5; index++) {
@@ -77,10 +80,10 @@ public class Bingo {
 
             // Generate a random Bingo number if the user chooses 'y'
             if (answer.equalsIgnoreCase("Y")) {
-                randomizer = ran.nextInt(76);
-                if (randomizer == 0) {
-                    randomizer++;
-                }
+                do {
+                    randomizer = ran.nextInt(76);
+                } while (drawnNumbers.contains(randomizer)); // Ensure the number is unique
+                drawnNumbers.add(randomizer); // Add the drawn number to the set
             }
             // End the game if the user chooses 'n'
             else if (answer.equalsIgnoreCase("N")) {
@@ -273,39 +276,47 @@ public class Bingo {
         // Initial menu loop
         while (true) {
             System.out.print("Enter the number here: ");
-            int in = input.nextInt();
 
-            // Start the game if the user chooses '1'
-            if (in == 1) {
-                System.out.println("    ::::::::::::::::::::::::::::::::::");
-                Bingo1();
-                String answer;
+            // Check if the input is an integer
+            if (input.hasNextInt()) {
+                int choice = input.nextInt();
 
-                // Ask the user if they want to play again
-                while (true) {
-                    System.out.println("Do you want to play again? \nYes or No?");
-                    answer = input.next();
-                    if (answer.equalsIgnoreCase("Yes")) {
-                        System.out.println();
-                        System.out.println();
-                        System.out.println("    ::::::::::::::::::::::::::::::::::");
-                        Bingo1();
-                    } else if (answer.equalsIgnoreCase("No")) {
-                        System.out.println("Thank You");
-                        break;
-                    } else {
-                        System.out.println("Invalid Input");
+                // Start the game if the user chooses '1'
+                if (choice == 1) {
+                    System.out.println("    ::::::::::::::::::::::::::::::::::");
+                    Bingo1();
+                    String answer;
+
+                    // Ask the user if they want to play again
+                    while (true) {
+                        System.out.println("Do you want to play again? \nYes or No?");
+                        answer = input.next();
+                        if (answer.equalsIgnoreCase("Yes")) {
+                            System.out.println();
+                            System.out.println();
+                            System.out.println("    ::::::::::::::::::::::::::::::::::");
+                            Bingo1();
+                        } else if (answer.equalsIgnoreCase("No")) {
+                            System.out.println("Thank You");
+                            break;
+                        } else {
+                            System.out.println("Invalid Input");
+                        }
                     }
+                    break;
                 }
-                break;
-            }
-            // Exit the game if the user chooses '2'
-            else if (in == 2) {
-                System.out.println("Goodbye");
-                break;
+                // Exit the game if the user chooses '2'
+                else if (choice == 2) {
+                    System.out.println("Goodbye");
+                    break;
+                } else {
+                    // Display an error message for invalid input
+                    System.out.println("Invalid Input: Please choose 1 or 2");
+                }
             } else {
-                // Display an error message for invalid input
-                System.out.println("Invalid Input: Please choose 1 or 2");
+                // Display an error message for non-integer input
+                System.out.println("Invalid Input: Please enter a number");
+                input.next(); // consume the invalid input
             }
         }
     }
