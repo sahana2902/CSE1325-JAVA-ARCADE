@@ -23,7 +23,7 @@ public class MineSweeper extends JFrame {
 
     public MineSweeper() {
         setTitle("Minesweeper");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLayout(new BorderLayout());
 
         setupGamePanel();
