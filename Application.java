@@ -71,7 +71,7 @@ public class Application {
 		                break;
 		            case 3:
 		            	//minesweeper
-			        MineSweeper.getInstance().showGame();
+			        MineSweeper.runMineSweeper();
 		                break;
 		            case 4:
 		            	endProgramMenu();
