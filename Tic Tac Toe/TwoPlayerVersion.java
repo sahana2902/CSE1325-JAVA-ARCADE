@@ -1,4 +1,4 @@
-package ticTacToe;
+package tictactoe;
 
 
 public class TwoPlayerVersion extends TicTacToe {
